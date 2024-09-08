@@ -1,22 +1,8 @@
 from flask import Flask, render_template, request
-import cv2
-import numpy as np
-import joblib
 import os
+from predict import predict_leaf_color  # Import the prediction function from predict.py
 
 app = Flask(__name__)
-
-# Load the model (Ensure the path is correct)
-MODEL_PATH = 'leaf_color_model.pkl'
-model = joblib.load(MODEL_PATH)
-
-# Function to extract color features from an image
-def extract_color_features(image_path):
-    image = cv2.imread(image_path)
-    image = cv2.resize(image, (64, 64))  # Resize the image to a fixed size
-    image_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)  # Convert to HSV color space
-    hist = cv2.calcHist([image_hsv], [0, 1], None, [180, 256], [0, 180, 0, 256])
-    return hist.flatten()  # Flatten the histogram to create a feature vector
 
 @app.route('/')
 def index():
@@ -36,17 +22,8 @@ def predict():
         filepath = os.path.join('uploads', file.filename)
         file.save(filepath)
 
-        # Extract features and make a prediction
-        features = extract_color_features(filepath).reshape(1, -1)
-        prediction = model.predict(features)
-
-        # Interpret the result
-        if prediction == 0:
-            result = 'Green Leaf'
-        elif prediction == 1:
-            result = 'Brown Leaf'
-        else:
-            result = 'Not a Leaf'
+        # Use the predict.py function to make the prediction
+        result = predict_leaf_color(filepath)
 
         # Clean up the file after prediction
         os.remove(filepath)
