@@ -1,0 +1,25 @@
+body {
+    background: rgb(192, 191, 191);
+    color: rgb(0, 0, 0);
+    font-family: 'Courier New', Courier, monospace;
+    }
+
+h1 {
+    background: rgb(150, 150, 150);
+    color: rgb(0, 0, 0);
+    margin: 10px;
+    padding: 20px;
+    border: none;
+    }
+
+.predict-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(43, 85, 107);
+    color: #a4a4a4;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    opacity: 85%;
+}
