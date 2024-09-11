@@ -13,7 +13,7 @@ def extract_color_features(image_path):
 
 # Define paths to your images
 image_paths = [
-    r'Greenery\dataset\not_leaf\NotLeaf18.jpg'
+    r'Greenery\dataset\not_leaf\NotLeaf19.jpg'
 ]
 labels = [2]  # 0 for green, 1 for brown, 2 for not a leaf
 

@@ -9,7 +9,9 @@
 <body>
     <h1>Upload an Image to Predict Leaf Color</h1>
     <form action="/predict" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*" required>
+        <input type="file" name="file" accept="image/*" onchange="previewImage(event)" required>
+        <br><br>
+        <img id="image-preview" src="" alt="Image Preview" style="display:none; max-width: 300px;">
         <br><br>
         <button class="predict-button" type="submit">Predict</button>
     </form>
@@ -17,5 +19,17 @@
     {% if prediction %}
         <h2>Prediction Result: {{ prediction }}</h2>
     {% endif %}
+
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+                var output = document.getElementById('image-preview');
+                output.src = reader.result;
+                output.style.display = 'block';
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
 </body>
 </html>
