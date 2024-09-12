@@ -13,10 +13,14 @@ def extract_color_features(image_path):
 
 # Define paths to your images
 image_paths = [
-    r'Greenery\dataset\leaf\Green10.jpg', 
-    r'Greenery\dataset\leaf\Brown2.png'
+    r'Greenery\dataset\leaf\Brown19.jpg',
+    r'Greenery\dataset\leaf\Brown20.jpg',
+    r'Greenery\dataset\leaf\Brown21.jpg',
+    r'Greenery\dataset\leaf\Green20.jpg',
+    r'Greenery\dataset\leaf\Green3.jpeg',
+    r'Greenery\dataset\leaf\Green21.jpg'
 ]
-labels = [0, 1]  # 0 for green, 1 for brown, 2 for not a leaf
+labels = [1, 1, 1, 0, 0, 0]  # 0 for green, 1 for brown, 2 for not a leaf
 
 # Extract features and save them in a list
 data = []
